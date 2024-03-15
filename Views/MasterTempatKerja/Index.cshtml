@@ -1,0 +1,108 @@
+﻿@model IEnumerable<TempatKerja>
+@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
+    <h1 class="h3 mb-0 text-gray-800">Data Tempat Kerja</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Master</li>
+        <li class="breadcrumb-item active" aria-current="page">Data Tempat Kerja</li>
+    </ol>
+</div>
+<hr />
+<a asp-controller="MasterTempatKerja" asp-action="Create">
+    <button type="button" class="btn btn-outline-success mb-4" style="width: 100px">+ Create</button>
+</a>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <div class="table-responsive">
+                <table id="table" class="table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Keterangan Tempat Kerja</th>
+                            <th>Jenis Kendaraan</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var no = 1;
+                        }
+                        @foreach (var obj in Model)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                <td>@obj.keterangan_tempat</td>
+                                <td>@obj.jenis_tempat</td>
+                                <td>
+                                    @if (obj.status == "Tersedia")
+                                    {
+                                        <span class="badge badge-success" style="font-size:15px;">@obj.status</span>
+                                    }
+                                    else if (obj.status == "Tidak Tersedia")
+                                    {
+                                        <span class="badge badge-warning" style="font-size:15px;">@obj.status</span>
+                                    }
+                                </td>
+                                <td style="width:10%">
+                                    <a asp-action="Update" class="btn btn-warning btn-sm" asp-route-id="@obj.id_tempatkerja">
+                                        <i class="fa fa-edit" data-toggle="tooltip" title="Edit Data"></i>
+                                    </a>
+                                    <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-id="@obj.id_tempatkerja">
+                                        <i class="fa fa-trash" data-toggle="tooltip" title="Create Data"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            no++;
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable();
+    });
+</script>
+<script>
+    if ("@TempData["IsDelete"]" != "") {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-3 text-white',
+                cancelButton: 'btn btn-danger mx-3 text-white'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Yakin Hapus Data?',
+            text: "Data yang dihapus tidak dapat dikembalikan",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus!',
+            cancelButtonText: 'Batal!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Berhasil!',
+                    'Data berhasil dihapus',
+                    'success'
+                ).then((value) => {
+                    window.location = "@Url.Action("DeleteConfirmed", "MasterTempatKerja", new { id = @TempData["ID"] })";
+                });
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+            }
+        })
+    }
+</script>

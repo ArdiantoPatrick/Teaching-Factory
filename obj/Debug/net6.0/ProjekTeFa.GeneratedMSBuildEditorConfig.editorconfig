@@ -1,0 +1,297 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProjekTeFa
+build_property.RootNamespace = ProjekTeFa
+build_property.ProjectDir = C:\File Patrick\Polman Astra\Semester 3\Pemrograman 4\Projek\PBL_Kelompok_1\Project\ProjekTeFa\ProjekTeFa\ProjekTeFa\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\File Patrick\Polman Astra\Semester 3\Pemrograman 4\Projek\PBL_Kelompok_1\Project\ProjekTeFa\ProjekTeFa\ProjekTeFa
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/BookingCustomer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0N1c3RvbWVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/BookingCustomer/DetailBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0N1c3RvbWVyXERldGFpbEJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/BookingCustomer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0N1c3RvbWVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/BookingCustomer/Riwayat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0N1c3RvbWVyXFJpd2F5YXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Booking/Booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Booking/DetailBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xEZXRhaWxCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Booking/FormPKB.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xGb3JtUEtCLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Dashboard/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Dashboard/Customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Dashboard/DosenInstruktur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERvc2VuSW5zdHJ1a3R1ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Dashboard/Mekanik.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXE1la2FuaWsuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Dashboard/ServiceAdvisor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFNlcnZpY2VBZHZpc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/Faq.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/LoginCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbkN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/LoginMekanik.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbk1la2FuaWsuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/LoginProdi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpblByb2RpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Home/RegisterCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/DataCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXERhdGFDdXN0b21lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/DetailBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXERldGFpbEJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/DetailCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXERldGFpbEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/DetailRC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXERldGFpbFJDLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/RiwayatTransaksi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXFJpd2F5YXRUcmFuc2Frc2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/LaporanDosen/TransaksiBerlangsung.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwb3JhbkRvc2VuXFRyYW5zYWtzaUJlcmxhbmdzdW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterCustomer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterDosenInstruktur/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyRG9zZW5JbnN0cnVrdHVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterDosenInstruktur/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyRG9zZW5JbnN0cnVrdHVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterDosenInstruktur/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyRG9zZW5JbnN0cnVrdHVyXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterGrup/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyR3J1cFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterGrup/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyR3J1cFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterGrup/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyR3J1cFxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterKendaraan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyS2VuZGFyYWFuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterMekanik/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyTWVrYW5pa1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterMekanik/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyTWVrYW5pa1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterMekanik/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyTWVrYW5pa1xVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterServiceAdvisor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyU2VydmljZUFkdmlzb3JcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterServiceAdvisor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyU2VydmljZUFkdmlzb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterServiceAdvisor/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyU2VydmljZUFkdmlzb3JcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterTempatKerja/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyVGVtcGF0S2VyamFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterTempatKerja/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyVGVtcGF0S2VyamFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/MasterTempatKerja/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyVGVtcGF0S2VyamFcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/PKB/PKB.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUEtCXFBLQi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/PKB/PKBCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUEtCXFBLQkNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/PKB/PKBSelesai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUEtCXFBLQlNlbGVzYWkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Profile/ProfileCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Profile/ProfileDosenInstruktur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlRG9zZW5JbnN0cnVrdHVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Profile/ProfileMekanik.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlTWVrYW5pay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Profile/ProfileSA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlU0EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RiwayatTransaksi/DetailBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUml3YXlhdFRyYW5zYWtzaVxEZXRhaWxCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RiwayatTransaksi/DetailCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUml3YXlhdFRyYW5zYWtzaVxEZXRhaWxDdXN0b21lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RiwayatTransaksi/DetailRC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUml3YXlhdFRyYW5zYWtzaVxEZXRhaWxSQy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RiwayatTransaksi/RiwayatTransaksi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUml3YXlhdFRyYW5zYWtzaVxSaXdheWF0VHJhbnNha3NpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RoundChecking/RoundChecking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm91bmRDaGVja2luZ1xSb3VuZENoZWNraW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/RoundChecking/RoundCheckingCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm91bmRDaGVja2luZ1xSb3VuZENoZWNraW5nQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/ServiceMekanik/AntrianService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1la2FuaWtcQW50cmlhblNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/ServiceMekanik/DetailServiceBelum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1la2FuaWtcRGV0YWlsU2VydmljZUJlbHVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/ServiceMekanik/DetailServiceSudah.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1la2FuaWtcRGV0YWlsU2VydmljZVN1ZGFoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/ServiceMekanik/ListService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1la2FuaWtcTGlzdFNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/ServiceMekanik/RiwayatService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1la2FuaWtcUml3YXlhdFNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutDosenInstruktur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dERvc2VuSW5zdHJ1a3R1ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutMekanik.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dE1la2FuaWsuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutServiceAdvisor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dFNlcnZpY2VBZHZpc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/LayoutWebsite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dFdlYnNpdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/File Patrick/Polman Astra/Semester 3/Pemrograman 4/Projek/PBL_Kelompok_1/Project/ProjekTeFa/ProjekTeFa/ProjekTeFa/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

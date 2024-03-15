@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProjekTeFa.Models.PKB>
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/LayoutDosenInstruktur.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Detail Customer</h1>
+    <a asp-controller="LaporanDosen" asp-action="RiwayatTransaksi">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="user">
+                <div class="row">
+                    @foreach (var obj in Model)
+                    {
+                        <div class="col-6 form-group">
+                            <label for="" class="form-label">Nama</label>
+                            <input type="text" class="form-control" value="@obj.Booking.Customer.nama_customer" readonly />
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="" class="form-label">Nomor Telepon</label>
+                            <input type="number" class="form-control" value="@obj.Booking.Customer.notelp_customer" readonly>
+                        </div>
+                        <div class="col-12 form-group">
+                            <label for="" class="form-label">Alamat</label>
+                            <textarea type="text" class="form-control" rows="4" readonly>@obj.Booking.Customer.alamat</textarea>
+                        </div>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

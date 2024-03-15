@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutMekanik.cshtml";
+}
+<!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Mekanik">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </div>
+    <hr>
+
+    <div class="row mb-3">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">List Service</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.list</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="ServiceMekanik" asp-action="ListService" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-list fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Antrian Service</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.antrian</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="ServiceMekanik" asp-action="AntrianService" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-double fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Riwayat Service</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.riwayat</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="ServiceMekanik" asp-action="RiwayatService" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-history fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

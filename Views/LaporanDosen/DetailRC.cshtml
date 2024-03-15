@@ -1,0 +1,1548 @@
+﻿@model ProjekTeFa.Models.RoundChecking
+@{
+    Layout = "~/Views/Shared/LayoutDosenInstruktur.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Detail Round Checking</h1>
+    <a asp-controller="LaporanDosen" asp-action="RiwayatTransaksi">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<form role="form" method="post">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-warning">CUSTOMER AND VEHICLE INFORMATION</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="date" class="col-sm-4 col-form-label">Date :</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" class="form-control" id="id" asp-for="id_booking" value="@ViewBag.data.id_booking">
+                                <input type="text" class="form-control" id="date" asp-for="tanggal" value="@ViewBag.datarc.tanggal" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="time" class="col-sm-4 col-form-label">Time In :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="time" asp-for="waktu" value="@ViewBag.datarc.waktu" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-group row">
+                        <label for="nama" class="col-sm-4 col-form-label">Customer Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nama" name="nama" value="@ViewBag.data.Customer.nama_customer" readonly>
+                        </div>
+                    </div>
+                    <div class=" form-group row">
+                        <label for="alamat" class="col-sm-4 col-form-label">Address :</label>
+                        <div class="col-sm-8">
+                            <textarea type="text" rows="4" class="form-control" id="alamat" name="alamat" readonly>@ViewBag.data.Customer.alamat</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telepon" class="col-sm-4 col-form-label">Today's Contact Phone :</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="telepon" name="telepon" value="@ViewBag.data.Customer.notelp_customer" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="jenis" class="col-sm-4 col-form-label">Vehicle Type :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="jenis" name="jenis" value="@ViewBag.data.jenis_kendaraan" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="merk" class="col-sm-4 col-form-label">Model :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="merk" name="merk" value="@ViewBag.data.merk_kendaraan" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="tahun" class="col-sm-4 col-form-label">Year :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tahun" name="tahun" value="@ViewBag.data.tahun_pembuatan" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="odometer" class="col-sm-4 col-form-label">Mileage :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="odometer" name="odometer" value="@ViewBag.data.odometer" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="plat" class="col-sm-4 col-form-label">License :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="plat" name="plat" value="@ViewBag.data.nomor_polisi" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="vin" class="col-sm-4 col-form-label">VIN :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="vin" asp-for="vin" value="@ViewBag.datarc.vin" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <!-- General Element -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-warning">SERVICE INFORMATION</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="sa" class="form-label">Service Advisor In Charge :</label>
+                        <input type="text" class="form-control" id="sa" value="@ViewBag.datarc.nama_sa" asp-for="nama_sa" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Description of service to be performed :</label>
+                        <textarea rows="4" class="form-control" id="perbaikan" name="perbaikan" readonly>@ViewBag.datarc.deskripsi_service</textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-label col-sm-3">Initial Estimate :</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="perkiraanharga" value="@ViewBag.datarc.perkiraan_biaya" asp-for="perkiraan_biaya" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-justify">Saya dengan ini mengizinkan perbaikan dan pemeriksaan yang dijelaskan untuk dilakukan bersamaan dengan bahan yang diperlukan dan setuju bahwa dealer tidak bertanggung jawab atas kehilangan atau kerusakan kendaraan atau barang yang tertinggal di dalam kendaraan jika terjadi kebakaran, pencurian atau sebab apa pun di luar kendali mereka. Saya dengan ini memberi Anda dan/atau karyawan Anda izin untuk mengoperasikan kendaraan sebagaimana diperlukan untuk tujuan pengujian dan inspeksi</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        @if (ViewBag.datarc.declines_sparetire == "Yes")
+                        {
+                            <input type="checkbox" class="custom-control-input col-sm-4" name="declines_sparetire" id="sparetire" value="Yes" asp-for="declines_sparetire" checked disabled />
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="custom-control-input col-sm-4" name="declines_sparetire" id="sparetire" value="Yes" asp-for="declines_sparetire" disabled />
+                        }
+                        <label class="custom-control-label" for="sparetire">Customer declines access to spare tire</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        @if (ViewBag.datarc.declines_glovebox == "Yes")
+                        {
+                            <input type="checkbox" class="custom-control-input" name="declines_glovebox" id="glovebox" value="Yes" asp-for="declines_glovebox" checked disabled />
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="custom-control-input" name="declines_glovebox" id="glovebox" value="Yes" asp-for="declines_glovebox" disabled />
+                        }
+                        <label class="custom-control-label" for="glovebox">Customer declines access to glove box</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-3" style="padding-left:250px">
+            <div class="row">
+                <div class="custom-control align-middle custom-radio ml-3" style="background-color:#117608;">
+                    <input type="radio" id="contoh_good" name="contoh" value="Good" class=" ml-1 custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contoh_good"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">Checked and OK at this time</label>
+                <div class="custom-control custom-radio" style="background-color:#F6F300">
+                    <input type="radio" id="contoh_warning" name="contoh" value="Warning" class="custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contohv_warning"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">May require future attention</label>
+                <div class="custom-control custom-radio" style="background-color:#ED1818">
+                    <input type="radio" id="contoh_danger" name="contoh" value="Danger" class="custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contoh_danger"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">Requires immediate attention</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <!-- Form Sizing -->
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">EXTERIOR</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608;">
+                            @if (ViewBag.datarc.e_horn_operation == "Good")
+                            {
+                                <input type="radio" id="e_horn_good" value="Good" class="custom-control-input" asp-for="e_horn_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_horn_good" value="Good" class="custom-control-input" asp-for="e_horn_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            @if (ViewBag.datarc.e_horn_operation == "Warning")
+                            {
+                                <input type="radio" id="e_horn_warning" value="Warning" class="custom-control-input" asp-for="e_horn_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_horn_warning" value="Warning" class="custom-control-input" asp-for="e_horn_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.e_horn_operation == "Danger")
+                            {
+                                <input type="radio" id="e_horn_danger" value="Danger" class="custom-control-input" asp-for="e_horn_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_horn_danger" value="Danger" class="custom-control-input" asp-for="e_horn_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1 mt-1">Horn Operation</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.e_lights == "Good")
+                            {
+                                <input type="radio" id="e_head_good" value="Good" class="custom-control-input" asp-for="e_lights" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_head_good" value="Good" class="custom-control-input" asp-for="e_lights" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_head_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.e_lights == "Warning")
+                            {
+                                <input type="radio" id="e_head_warning" value="Warning" class="custom-control-input" asp-for="e_lights" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_head_warning" value="Warning" class="custom-control-input" asp-for="e_lights" disabled>
+                            }
+                            <label class="custom-control-label" for="e_head_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.e_lights == "Danger")
+                            {
+                                <input type="radio" id="e_head_danger" value="Danger" class="custom-control-input" asp-for="e_lights" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_head_danger" value="Danger" class="custom-control-input" asp-for="e_lights" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_head_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1 mt-1">Head lights/ tail lights/ turn signals / brake lights / hazard warning lights / exterior lamps</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.e_washer_operation == "Good")
+                            {
+                                <input type="radio" id="e_wiper_good" value="Good" class="custom-control-input" asp-for="e_washer_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_wiper_good" value="Good" class="custom-control-input" asp-for="e_washer_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            @if (ViewBag.datarc.e_washer_operation == "Warning")
+                            {
+                                <input type="radio" id="e_wiper_warning" value="Warning" class="custom-control-input" asp-for="e_washer_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_wiper_warning" value="Warning" class="custom-control-input" asp-for="e_washer_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.e_washer_operation == "Danger")
+                            {
+                                <input type="radio" id="e_wiper_danger" value="Danger" class="custom-control-input" asp-for="e_washer_operation" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_wiper_danger" value="Danger" class="custom-control-input" asp-for="e_washer_operation" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Windshield wiper and washer operation</legend>
+
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio  ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.e_winshield == "Good")
+                            {
+                                <input type="radio" id="e_glass_good" value="Good" class="custom-control-input" asp-for="e_winshield" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_glass_good" value="Good" class="custom-control-input" asp-for="e_winshield" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.e_winshield == "Warning")
+                            {
+                                <input type="radio" id="e_glass_warning" value="Warning" class="custom-control-input" asp-for="e_winshield" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_glass_warning" value="Warning" class="custom-control-input" asp-for="e_winshield" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.e_winshield == "Danger")
+                            {
+                                <input type="radio" id="e_glass_danger" value="Danger" class="custom-control-input" asp-for="e_winshield" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_glass_danger" value="Danger" class="custom-control-input" asp-for="e_winshield" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Windshield glass</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.e_fuel_tank_cap == "Good")
+                            {
+                                <input type="radio" id="e_tank_good" value="Good" class="custom-control-input" asp-for="e_fuel_tank_cap" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_tank_good" value="Good" class="custom-control-input" asp-for="e_fuel_tank_cap" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.e_fuel_tank_cap == "Warning")
+                            {
+                                <input type="radio" id="e_tank_warning" value="Warning" class="custom-control-input" asp-for="e_fuel_tank_cap" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_tank_warning" value="Warning" class="custom-control-input" asp-for="e_fuel_tank_cap" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.e_fuel_tank_cap == "Danger")
+                            {
+                                <input type="radio" id="e_tank_danger" value="Danger" class="custom-control-input" asp-for="e_fuel_tank_cap" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="e_tank_danger" value="Danger" class="custom-control-input" asp-for="e_fuel_tank_cap" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Fuel tank cap gasket</legend>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">INTERIOR</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.i_combination_meter == "Good")
+                            {
+                                <input type="radio" id="i_dome_good" value="Good" class="custom-control-input" asp-for="i_combination_meter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_dome_good" value="Good" class="custom-control-input" asp-for="i_combination_meter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px" asp-for="i_combination_meter" disabled>
+                            <input type="radio" id="i_dome_warning" value="Warning" class="custom-control-input">
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.i_combination_meter == "Danger")
+                            {
+                                <input type="radio" id="i_dome_danger" value="Danger" class="custom-control-input" asp-for="i_combination_meter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_dome_danger" value="Danger" class="custom-control-input" asp-for="i_combination_meter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Dome light / amp light / dimmer combination meter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.i_cabin_air_filter == "Good")
+                            {
+                                <input type="radio" id="i_cabin_good" value="Good" class="custom-control-input" asp-for="i_cabin_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_cabin_good" value="Good" class="custom-control-input" asp-for="i_cabin_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.i_cabin_air_filter == "Warning")
+                            {
+                                <input type="radio" id="i_cabin_warning" value="Warning" class="custom-control-input" asp-for="i_cabin_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_cabin_warning" value="Warning" class="custom-control-input" asp-for="i_cabin_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.i_cabin_air_filter == "Danger")
+                            {
+                                <input type="radio" id="i_cabin_danger" value="Danger" class="custom-control-input" asp-for="i_cabin_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_cabin_danger" value="Danger" class="custom-control-input" asp-for="i_cabin_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Cabin air filter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.i_parking_brake == "Good")
+                            {
+                                <input type="radio" id="i_parking_good" value="Good" class="custom-control-input" asp-for="i_parking_brake" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_parking_good" value="Good" class="custom-control-input" asp-for="i_parking_brake" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            <input type="radio" id="i_parking_warning" value="Warning" class="custom-control-input" asp-for="i_parking_brake" disabled>
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.i_parking_brake == "Danger")
+                            {
+                                <input type="radio" id="i_parking_danger" value="Danger" class="custom-control-input" asp-for="i_parking_brake" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_parking_danger" value="Danger" class="custom-control-input" asp-for="i_parking_brake" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Parking brake operation</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.i_floor == "Good")
+                            {
+                                <input type="radio" id="i_check_good" value="Good" class="custom-control-input" asp-for="i_floor" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_check_good" value="Good" class="custom-control-input" asp-for="i_floor" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.i_floor == "Warning")
+                            {
+                                <input type="radio" id="i_check_warning" value="Warning" class="custom-control-input" asp-for="i_floor" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_check_warning" value="Warning" class="custom-control-input" asp-for="i_floor" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.i_floor == "Danger")
+                            {
+                                <input type="radio" id="i_check_danger" value="Danger" class="custom-control-input" asp-for="i_floor" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="i_check_danger" value="Danger" class="custom-control-input" asp-for="i_floor" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Check installation of driver's floormat</legend>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">UNDER HOOD</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_air_filter == "Good")
+                            {
+                                <input type="radio" id="uh_air_good" value="Good" class="custom-control-input" asp-for="uh_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_air_good" value="Good" class="custom-control-input" asp-for="uh_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uh_air_filter == "Warning")
+                            {
+                                <input type="radio" id="uh_air_warning" value="Warning" class="custom-control-input" asp-for="uh_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_air_warning" value="Warning" class="custom-control-input" asp-for="uh_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_air_filter == "Danger")
+                            {
+                                <input type="radio" id="uh_air_danger" value="Danger" class="custom-control-input" asp-for="uh_air_filter" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_air_danger" value="Danger" class="custom-control-input" asp-for="uh_air_filter" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Air filter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_battery_condition == "Good")
+                            {
+                                <input type="radio" id="uh_battery_cables" value="Good" class="custom-control-input" asp-for="uh_battery_condition" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_battery_cables" value="Good" class="custom-control-input" asp-for="uh_battery_condition" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_cables"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uh_battery_condition == "Warning")
+                            {
+                                <input type="radio" id="uh_battery_clamps" value="Warning" class="custom-control-input" asp-for="uh_battery_condition" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_battery_clamps" value="Warning" class="custom-control-input" asp-for="uh_battery_condition" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_clamps"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_battery_condition == "Danger")
+                            {
+                                <input type="radio" id="uh_battery_corrosion" value="Danger" class="custom-control-input" asp-for="uh_battery_condition" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_battery_corrosion" value="Danger" class="custom-control-input" asp-for="uh_battery_condition" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Battery condition (cables / clamps / corrosion)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_battery_state == "Good")
+                            {
+                                <input type="radio" id="uh_state_good" value="Good" class="custom-control-input" asp-for="uh_battery_state" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_state_good" value="Good" class="custom-control-input" asp-for="uh_battery_state" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uh_battery_state == "Warning")
+                            {
+                                <input type="radio" id="uh_state_warning" value="Warning" class="custom-control-input" asp-for="uh_battery_state" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_state_warning" value="Warning" class="custom-control-input" asp-for="uh_battery_state" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_battery_state == "Danger")
+                            {
+                                <input type="radio" id="uh_state_danger" value="Danger" class="custom-control-input" asp-for="uh_battery_state" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_state_danger" value="Danger" class="custom-control-input" asp-for="uh_battery_state" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Battery state of health</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_cooling_system == "Good")
+                            {
+                                <input type="radio" id="uh_cooling_good" value="Good" class="custom-control-input" asp-for="uh_cooling_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_cooling_good" value="Good" class="custom-control-input" asp-for="uh_cooling_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.uh_cooling_system == "Warning")
+                            {
+                                <input type="radio" id="uh_cooling_warning" value="Warning" class="custom-control-input" asp-for="uh_cooling_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_cooling_warning" value="Warning" class="custom-control-input" asp-for="uh_cooling_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_cooling_system == "Danger")
+                            {
+                                <input type="radio" id="uh_cooling_leaks" value="Danger" class="custom-control-input" asp-for="uh_cooling_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_cooling_leaks" value="Danger" class="custom-control-input" asp-for="uh_cooling_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_leaks"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Cooling System (leaks)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_hoses == "Good")
+                            {
+                                <input type="radio" id="uh_hoses_cracks" value="Good" class="custom-control-input" asp-for="uh_hoses" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_hoses_cracks" value="Good" class="custom-control-input" asp-for="uh_hoses" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_cracks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uh_hoses == "Warning")
+                            {
+                                <input type="radio" id="uh_hoses_damage" value="Warning" class="custom-control-input" asp-for="uh_hoses" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_hoses_damage" value="Warning" class="custom-control-input" asp-for="uh_hoses" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_hoses == "Danger")
+                            {
+                                <input type="radio" id="uh_hoses_leaks" value="Danger" class="custom-control-input" asp-for="uh_hoses" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_hoses_leaks" value="Danger" class="custom-control-input" asp-for="uh_hoses" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_leaks"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Hoses (crack / damage / leaks)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_drive_belts == "Good")
+                            {
+                                <input type="radio" id="uh_drive_cracks" value="Good" class="custom-control-input" asp-for="uh_drive_belts" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_drive_cracks" value="Good" class="custom-control-input" asp-for="uh_drive_belts" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_cracks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.uh_drive_belts == "Warning")
+                            {
+                                <input type="radio" id="uh_drive_damage" value="Warning" class="custom-control-input" asp-for="uh_drive_belts" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_drive_damage" value="Warning" class="custom-control-input" asp-for="uh_drive_belts" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_damage" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_drive_belts == "Danger")
+                            {
+                                <input type="radio" id="uh_drive_wear" value="Danger" class="custom-control-input" asp-for="uh_drive_belts" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_drive_wear" value="Danger" class="custom-control-input" asp-for="uh_drive_belts" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_wear"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Drive belts (cracks / damage / wear)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uh_radiator_core == "Good")
+                            {
+                                <input type="radio" id="uh_radiator_equipped" value="Good" class="custom-control-input" asp-for="uh_radiator_core" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_radiator_equipped" value="Good" class="custom-control-input" asp-for="uh_radiator_core" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_equipped"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            @if (ViewBag.datarc.uh_radiator_core == "Warning")
+                            {
+                                <input type="radio" id="uh_radiator_damage" value="Warning" class="custom-control-input" asp-for="uh_radiator_core" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_radiator_damage" value="Warning" class="custom-control-input" asp-for="uh_radiator_core" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_damage" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uh_radiator_core == "Danger")
+                            {
+                                <input type="radio" id="uh_radiator_stripped" value="Danger" class="custom-control-input" asp-for="uh_radiator_core" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uh_radiator_stripped" value="Danger" class="custom-control-input" asp-for="uh_radiator_core" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_stripped"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Radiator core / air condition condenset (if equipped)</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">FLUIDS</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-1">
+                            <label>OK</label>
+                        </div>
+                        <div class="custom-control ml-1">
+                            <label>Filled</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_windshield_washer == "OK")
+                            {
+                                <input type="radio" id="f_windshield_ok" value="OK" class="custom-control-input" asp-for="f_windshield_washer" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_windshield_ok" value="OK" class="custom-control-input" asp-for="f_windshield_washer" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_windshield_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_windshield_washer == "Filled")
+                            {
+                                <input type="radio" id="f_windshield_filled" value="Filled" class="custom-control-input" asp-for="f_windshield_washer" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_windshield_filled" value="Filled" class="custom-control-input" asp-for="f_windshield_washer" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_windshield_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Windshield Washer</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_clutch_reservoir == "OK")
+                            {
+                                <input type="radio" id="f_cluids_ok" value="OK" class="custom-control-input" asp-for="f_clutch_reservoir" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_cluids_ok" value="OK" class="custom-control-input" asp-for="f_clutch_reservoir" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_cluids_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_clutch_reservoir == "Filled")
+                            {
+                                <input type="radio" id="f_cluids_filled" value="Filled" class="custom-control-input" asp-for="f_clutch_reservoir" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_cluids_filled" value="Filled" class="custom-control-input" asp-for="f_clutch_reservoir" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_cluids_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Clutch reservoir(if equipped)</legend>
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_coolant == "OK")
+                            {
+                                <input type="radio" id="f_coolant_ok" value="OK" class="custom-control-input" asp-for="f_coolant" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_coolant_ok" value="OK" class="custom-control-input" asp-for="f_coolant" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_coolant_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_coolant == "Filled")
+                            {
+                                <input type="radio" id="f_coolant_filled" value="Filled" class="custom-control-input" asp-for="f_coolant" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_coolant_filled" value="Filled" class="custom-control-input" asp-for="f_coolant" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_coolant_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Coolant (___degree of protection)</legend>
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_transmission == "OK")
+                            {
+                                <input type="radio" id="f_trans_ok" value="OK" class="custom-control-input" asp-for="f_transmission" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_trans_ok" value="OK" class="custom-control-input" asp-for="f_transmission" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_trans_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_transmission == "Filled")
+                            {
+                                <input type="radio" id="f_trans_filled" value="Filled" class="custom-control-input" asp-for="f_transmission" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_trans_filled" value="Filled" class="custom-control-input" asp-for="f_transmission" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_trans_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Transmission / transaxle</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_power_steering == "OK")
+                            {
+                                <input type="radio" id="f_power_ok" value="OK" class="custom-control-input" asp-for="f_power_steering" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_power_ok" value="OK" class="custom-control-input" asp-for="f_power_steering" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_power_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_power_steering == "Filled")
+                            {
+                                <input type="radio" id="f_power_filled" value="Filled" class="custom-control-input" asp-for="f_power_steering" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_power_filled" value="Filled" class="custom-control-input" asp-for="f_power_steering" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_power_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Power steering (if equipped)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_differential == "OK")
+                            {
+                                <input type="radio" id="f_diff_ok" value="OK" class="custom-control-input" asp-for="f_differential" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_diff_ok" value="OK" class="custom-control-input" asp-for="f_differential" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_diff_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_differential == "Filled")
+                            {
+                                <input type="radio" id="f_diff_filled" value="Filled" class="custom-control-input" asp-for="f_differential" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_diff_filled" value="Filled" class="custom-control-input" asp-for="f_differential" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_diff_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Differential (if equipped)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_brake_reservoir == "OK")
+                            {
+                                <input type="radio" id="f_brake_ok" value="OK" class="custom-control-input" asp-for="f_brake_reservoir" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_brake_ok" value="OK" class="custom-control-input" asp-for="f_brake_reservoir" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_brake_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_brake_reservoir == "Filled")
+                            {
+                                <input type="radio" id="f_brake_filled" value="Filled" class="custom-control-input" asp-for="f_brake_reservoir" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_brake_filled" value="Filled" class="custom-control-input" asp-for="f_brake_reservoir" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_brake_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Brake reservoir</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            @if (ViewBag.datarc.f_transfercase == "OK")
+                            {
+                                <input type="radio" id="f_case_ok" value="OK" class="custom-control-input" asp-for="f_transfercase" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_case_ok" value="OK" class="custom-control-input" asp-for="f_transfercase" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_case_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            @if (ViewBag.datarc.f_transfercase == "Filled")
+                            {
+                                <input type="radio" id="f_case_filled" value="Filled" class="custom-control-input" asp-for="f_transfercase" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="f_case_filled" value="Filled" class="custom-control-input" asp-for="f_transfercase" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="f_case_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Transfer case (4WD models)</legend>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-6">
+            <!-- Horizontal Form -->
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">UNDER VEHICLE</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_propeller == "Good")
+                            {
+                                <input type="radio" id="uv_propeller_damage" value="Good" class="custom-control-input" asp-for="uv_propeller" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_propeller_damage" value="Good" class="custom-control-input" asp-for="uv_propeller" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_propeller == "Warning")
+                            {
+                                <input type="radio" id="uv_propeller_leaks" value="Warning" class="custom-control-input" asp-for="uv_propeller" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_propeller_leaks" value="Warning" class="custom-control-input" asp-for="uv_propeller" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_propeller == "Danger")
+                            {
+                                <input type="radio" id="uv_propeller_UJoints" value="" class="custom-control-input" asp-for="uv_propeller" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_propeller_UJoints" value="" class="custom-control-input" asp-for="uv_propeller" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_UJoints"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Propeller / driveshaft (damage / leaks / U-joints)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_drive_shaft == "Good")
+                            {
+                                <input type="radio" id="uv_drive_damage" value="Good" class="custom-control-input" asp-for="uv_drive_shaft" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_drive_damage" value="Good" class="custom-control-input" asp-for="uv_drive_shaft" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_drive_shaft == "Warning")
+                            {
+                                <input type="radio" id="uv_drive_leaks" value="Warning" class="custom-control-input" asp-for="uv_drive_shaft" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_drive_leaks" value="Warning" class="custom-control-input" asp-for="uv_drive_shaft" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_drive_shaft == "Danger")
+                            {
+                                <input type="radio" id="uv_drive_boots" value="Danger" class="custom-control-input" asp-for="uv_drive_shaft" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_drive_boots" value="Danger" class="custom-control-input" asp-for="uv_drive_shaft" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_boots"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Drive / CV shaft (damage - leaks - boots)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_axle_hub == "Good")
+                            {
+                                <input type="radio" id="uv_axle_damage" value="Good" class="custom-control-input" asp-for="uv_axle_hub" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_axle_damage" value="Good" class="custom-control-input" asp-for="uv_axle_hub" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_axle_hub == "Warning")
+                            {
+                                <input type="radio" id="uv_axle_leaks" value="Warning" class="custom-control-input" asp-for="uv_axle_hub" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_axle_leaks" value="Warning" class="custom-control-input" asp-for="uv_axle_hub" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_axle_hub == "Danger")
+                            {
+                                <input type="radio" id="uv_axle_noise" value="Danger" class="custom-control-input" asp-for="uv_axle_hub" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_axle_noise" value="Danger" class="custom-control-input" asp-for="uv_axle_hub" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_noise"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Axle hub & bearing (damage / leaks / noise)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_steering == "Good")
+                            {
+                                <input type="radio" id="uv_stearing_damage" value="Good" class="custom-control-input" asp-for="uv_steering" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_stearing_damage" value="Good" class="custom-control-input" asp-for="uv_steering" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_steering == "Warning")
+                            {
+                                <input type="radio" id="uv_stearing_leaks" value="Warning" class="custom-control-input" asp-for="uv_steering" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_stearing_leaks" value="Warning" class="custom-control-input" asp-for="uv_steering" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_steering == "Danger")
+                            {
+                                <input type="radio" id="uv_stearing_worn" value="Danger" class="custom-control-input" asp-for="uv_steering" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_stearing_worn" value="Danger" class="custom-control-input" asp-for="uv_steering" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_worn"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Stearing linkage (damage / leaks / worn components)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_suspension == "Good")
+                            {
+                                <input type="radio" id="uv_suspension_damage" value="Good" class="custom-control-input" asp-for="uv_suspension" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_suspension_damage" value="Good" class="custom-control-input" asp-for="uv_suspension" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_suspension == "Warning")
+                            {
+                                <input type="radio" id="uv_suspension_leaks" value="Warning" class="custom-control-input" asp-for="uv_suspension" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_suspension_leaks" value="Warning" class="custom-control-input" asp-for="uv_suspension" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_suspension == "Danger")
+                            {
+                                <input type="radio" id="uv_suspension_worn" value="Danger" class="custom-control-input" asp-for="uv_suspension" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_suspension_worn" value="Danger" class="custom-control-input" asp-for="uv_suspension" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_worn"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Suspension (damage / leaks / worn components)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_fluid_leaks == "Good")
+                            {
+                                <input type="radio" id="uv_fluid_engine" value="Good" class="custom-control-input" asp-for="uv_fluid_leaks" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fluid_engine" value="Good" class="custom-control-input" asp-for="uv_fluid_leaks" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_engine"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_fluid_leaks == "Warning")
+                            {
+                                <input type="radio" id="uv_fluid_transmission" value="Warning" class="custom-control-input" asp-for="uv_fluid_leaks" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fluid_transmission" value="Warning" class="custom-control-input" asp-for="uv_fluid_leaks" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_transmission"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_fluid_leaks == "Danger")
+                            {
+                                <input type="radio" id="uv_fluid_differential" value="Danger" class="custom-control-input" asp-for="uv_fluid_leaks" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fluid_differential" value="Danger" class="custom-control-input" asp-for="uv_fluid_leaks" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_differential"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Fluid leaks (engine / transmission / differential)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_exhaust_system == "Good")
+                            {
+                                <input type="radio" id="uv_exhaust_damage" value="Good" class="custom-control-input" asp-for="uv_exhaust_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_exhaust_damage" value="Good" class="custom-control-input" asp-for="uv_exhaust_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_exhaust_system == "Warning")
+                            {
+                                <input type="radio" id="uv_exhaust_leaks" value="Warning" class="custom-control-input" asp-for="uv_exhaust_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_exhaust_leaks" value="Warning" class="custom-control-input" asp-for="uv_exhaust_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_exhaust_system == "Danger")
+                            {
+                                <input type="radio" id="uv_exhaust_corrosion" value="Danger" class="custom-control-input" asp-for="uv_exhaust_system" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_exhaust_corrosion" value="Danger" class="custom-control-input" asp-for="uv_exhaust_system" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Exhaust System (damage / leaks / corrosion)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.uv_fuel_connections == "Good")
+                            {
+                                <input type="radio" id="uv_fuel_damage" value="Good" class="custom-control-input" asp-for="uv_fuel_connections" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fuel_damage" value="Good" class="custom-control-input" asp-for="uv_fuel_connections" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.uv_fuel_connections == "Warning")
+                            {
+                                <input type="radio" id="uv_fuel_leaks" value="Warning" class="custom-control-input" asp-for="uv_fuel_connections" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fuel_leaks" value="Warning" class="custom-control-input" asp-for="uv_fuel_connections" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.uv_fuel_connections == "Danger")
+                            {
+                                <input type="radio" id="uv_fuel_corrosion" value="Danger" class="custom-control-input" asp-for="uv_fuel_connections" disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="uv_fuel_corrosion" value="Danger" class="custom-control-input" asp-for="uv_fuel_connections" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Fuel lines & connections / Fuel Tank Bands / Fuel Tank Vapor Vent System Hoses (damage / leaks / corrosion)</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">TIRES</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.t_tread_depth == "Good")
+                            {
+                                <input type="radio" id="t_tread_good" value="Good" class="custom-control-input" asp-for="t_tread_depth" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tread_good" value="Good" class="custom-control-input" asp-for="t_tread_depth" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.t_tread_depth == "Warning")
+                            {
+                                <input type="radio" id="t_tread_warning" value="Warning" class="custom-control-input" asp-for="t_tread_depth" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tread_warning" value="Warning" class="custom-control-input" asp-for="t_tread_depth" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.t_tread_depth == "Danger")
+                            {
+                                <input type="radio" id="t_tread_danger" value="Danger" class="custom-control-input" asp-for="t_tread_depth" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tread_danger" value="Danger" class="custom-control-input" asp-for="t_tread_depth" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Tread depth</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.t_tire_damage == "Good")
+                            {
+                                <input type="radio" id="t_tire_good" value="Good" class="custom-control-input" asp-for="t_tire_damage" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tire_good" value="Good" class="custom-control-input" asp-for="t_tire_damage" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.t_tire_damage == "Warning")
+                            {
+                                <input type="radio" id="t_tire_warning" value="Warning" class="custom-control-input" asp-for="t_tire_damage" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tire_warning" value="Warning" class="custom-control-input" asp-for="t_tire_damage" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.t_tire_damage == "Danger")
+                            {
+                                <input type="radio" id="t_tire_danger" value="Danger" class="custom-control-input" asp-for="t_tire_damage" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_tire_danger" value="Danger" class="custom-control-input" asp-for="t_tire_damage" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Tire Damage / Abnormal wear</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.t_rims == "Good")
+                            {
+                                <input type="radio" id="t_rims_good" value="Good" class="custom-control-input" asp-for="t_rims" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_rims_good" value="Good" class="custom-control-input" asp-for="t_rims" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.t_rims == "Warning")
+                            {
+                                <input type="radio" id="t_rims_warning" value="Warning" class="custom-control-input" asp-for="t_rims" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_rims_warning" value="Warning" class="custom-control-input" asp-for="t_rims" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.t_rims == "Danger")
+                            {
+                                <input type="radio" id="t_rims_danger" value="Danger" class="custom-control-input" asp-for="t_rims" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_rims_danger" value="Danger" class="custom-control-input" asp-for="t_rims" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Rims / wheels / lug nuts</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3 mr-5" style="background-color:#117608">
+                            @if (ViewBag.datarc.t_rotated == "Good")
+                            {
+                                <input type="radio" id="t_rotated_good" value="Good" class="custom-control-input" asp-for="t_rotated" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="t_rotated_good" value="Good" class="custom-control-input" asp-for="t_rotated" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="t_rotated_good"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 ml-3 mt-1">Tires rotated</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">BRAKES</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.b_brake_lining == "Good")
+                            {
+                                <input type="radio" id="b_lining_good" value="Good" class="custom-control-input" asp-for="b_brake_lining" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_lining_good" value="Good" class="custom-control-input" asp-for="b_brake_lining" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            @if (ViewBag.datarc.b_brake_lining == "Warning")
+                            {
+                                <input type="radio" id="b_lining_warning" value="Warning" class="custom-control-input" asp-for="b_brake_lining" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_lining_warning" value="Warning" class="custom-control-input" asp-for="b_brake_lining" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.b_brake_lining == "Danger")
+                            {
+                                <input type="radio" id="b_lining_danger" value="Danger" class="custom-control-input" asp-for="b_brake_lining" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_lining_danger" value="Danger" class="custom-control-input" asp-for="b_brake_lining" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Brake Lining</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.b_hoses == "Good")
+                            {
+                                <input type="radio" id="b_brake_good" value="Good" class="custom-control-input" asp-for="b_hoses" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_brake_good" value="Good" class="custom-control-input" asp-for="b_hoses" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="padding-right:8px">
+                            <input type="radio" id="b_brake_warning" value="Warning" class="custom-control-input" asp-for="b_hoses" disabled>
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.b_hoses == "Danger")
+                            {
+                                <input type="radio" id="b_brake_danger" value="Danger" class="custom-control-input" asp-for="b_hoses" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_brake_danger" value="Danger" class="custom-control-input" asp-for="b_hoses" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Brake Lines / hoses / parking brake cable</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            @if (ViewBag.datarc.b_discs == "Good")
+                            {
+                                <input type="radio" id="b_discs_good" value="Good" class="custom-control-input" asp-for="b_discs" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_discs_good" value="Good" class="custom-control-input" asp-for="b_discs" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="padding-right:8px">
+                            <input type="radio" id="b_discs_warning" value="Warning" class="custom-control-input" asp-for="b_discs" disabled>
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            @if (ViewBag.datarc.b_discs == "Danger")
+                            {
+                                <input type="radio" id="b_discs_danger" value="Danger" class="custom-control-input" asp-for="b_discs" checked disabled>
+                            }
+                            else
+                            {
+                                <input type="radio" id="b_discs_danger" value="Danger" class="custom-control-input" asp-for="b_discs" disabled>
+                            }
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Discs / drums / calipers / wheel cylinders</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="form-group pt-1">
+                        <label>Comments :</label>
+                        <textarea rows="4" class="form-control mt-1" id="komen" asp-for="komentar" readonly>@ViewBag.datarc.komentar</textarea>
+                    </div>
+                    @*                    <div class="form-group pt-2">
+                    <button type="submit" class="btn btn-success" id="simpan" style="width: 150px;" onclick="return radioValidation();">Confirm</button>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#simpledate1 .input-group.date').datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+    });
+</script>
+<script>
+    var bilangan = document.getElementsById('perkiraanharga');
+    var number_string = bilangan.toString(),
+        sisa = number_string.length % 3,
+        rupiah = number_string.substr(0, sisa),
+        ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+    if (ribuan) {
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+    }
+    document.getElementById('perkiraanharga').value = rupiah;
+</script>

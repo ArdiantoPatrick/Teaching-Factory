@@ -1,0 +1,869 @@
+﻿@model ProjekTeFa.Models.RoundChecking
+@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Round Checking</h1>
+    <a asp-controller="RoundChecking" asp-action="RoundChecking">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<form role="form" method="post">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-warning">CUSTOMER AND VEHICLE INFORMATION</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="date" class="col-sm-4 col-form-label">Date :</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" class="form-control" id="id" asp-for="id_booking" value="@ViewBag.data.id_booking" >
+                                <input type="text" class="form-control" id="date" asp-for="tanggal" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="time" class="col-sm-4 col-form-label">Time In :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="time" asp-for="waktu" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-group row">
+                        <label for="nama" class="col-sm-4 col-form-label">Customer Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nama" name="nama" value="@ViewBag.data.Customer.nama_customer" readonly>
+                        </div>
+                    </div>
+                    <div class=" form-group row">
+                        <label for="alamat" class="col-sm-4 col-form-label">Address :</label>
+                        <div class="col-sm-8">
+                            <textarea type="text" rows="4" class="form-control" id="alamat" name="alamat" readonly>@ViewBag.data.Customer.alamat</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telepon" class="col-sm-4 col-form-label">Today's Contact Phone :</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="telepon" name="telepon" value="@ViewBag.data.Customer.notelp_customer" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="jenis" class="col-sm-4 col-form-label">Vehicle Type :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="jenis" name="jenis" value="@ViewBag.data.jenis_kendaraan" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="merk" class="col-sm-4 col-form-label">Model :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="merk" name="merk" value="@ViewBag.data.merk_kendaraan" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="tahun" class="col-sm-4 col-form-label">Year :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tahun" name="tahun" value="@ViewBag.data.tahun_pembuatan" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group row col-6">
+                            <label for="odometer" class="col-sm-4 col-form-label">Mileage :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="odometer" name="odometer" value="@ViewBag.data.odometer" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row col-6">
+                            <label for="plat" class="col-sm-4 col-form-label">License :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="plat" name="plat" value="@ViewBag.data.nomor_polisi" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="vin" class="col-sm-4 col-form-label">VIN :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="vin" name="vin" maxlength="17" asp-for="vin" placeholder="Enter VIN" onkeypress="if(this.value.length==17) return false;" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <!-- General Element -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-warning">SERVICE INFORMATION</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="sa" class="form-label">Service Advisor In Charge :</label>
+                        <input type="text" class="form-control" id="sa" value="@ViewBag.namasa" asp-for="nama_sa" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Description of service to be performed :</label>
+                        <textarea rows="4" class="form-control" id="perbaikan" placeholder="Enter Plan..." asp-for="deskripsi_service" required></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-label col-sm-3">Initial Estimate :</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="perkiraanharga" placeholder="Enter estimate price..." asp-for="perkiraan_biaya" required></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-justify">Saya dengan ini mengizinkan perbaikan dan pemeriksaan yang dijelaskan untuk dilakukan bersamaan dengan bahan yang diperlukan dan setuju bahwa dealer tidak bertanggung jawab atas kehilangan atau kerusakan kendaraan atau barang yang tertinggal di dalam kendaraan jika terjadi kebakaran, pencurian atau sebab apa pun di luar kendali mereka. Saya dengan ini memberi Anda dan/atau karyawan Anda izin untuk mengoperasikan kendaraan sebagaimana diperlukan untuk tujuan pengujian dan inspeksi</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input col-sm-4" name="declines_glovebox" id="sparetire" value="Yes" asp-for="declines_sparetire"/>
+                        <label class="custom-control-label" for="sparetire">Customer declines access to spare tire</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="declines_glovebox" id="glovebox" value="Yes" asp-for="declines_glovebox"/>
+                        <label class="custom-control-label" for="glovebox">Customer declines access to glove box</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-3" style="padding-left:250px">
+            <div class="row">
+                <div class="custom-control align-middle custom-radio ml-3" style="background-color:#117608;">
+                    <input type="radio" id="contoh_good" name="contoh" value="Good" class=" ml-1 custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contoh_good"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">Checked and OK at this time</label>
+                <div class="custom-control custom-radio" style="background-color:#F6F300">
+                    <input type="radio" id="contoh_warning" name="contoh" value="Warning" class="custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contohv_warning"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">May require future attention</label>
+                <div class="custom-control custom-radio" style="background-color:#ED1818">
+                    <input type="radio" id="contoh_danger" name="contoh" value="Danger" class="custom-control-input" disabled>
+                    <label class="custom-control-label ml-2 mt-1" for="contoh_danger"></label>
+                </div>
+                <label class="mr-3 ml-2 mt-1">Requires immediate attention</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <!-- Form Sizing -->
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">EXTERIOR</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608;">
+                            <input type="radio" id="e_horn_good" value="Good" class="custom-control-input" asp-for="e_horn_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            <input type="radio" id="e_horn_warning" value="Warning" class="custom-control-input" asp-for="e_horn_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="e_horn_danger" value="Danger" class="custom-control-input" asp-for="e_horn_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_horn_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1 mt-1">Horn Operation</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="e_head_good" value="Good" class="custom-control-input" asp-for="e_lights" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_head_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="e_head_warning" value="Warning" class="custom-control-input" asp-for="e_lights" required>
+                            <label class="custom-control-label" for="e_head_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="e_head_danger" value="Danger" class="custom-control-input" asp-for="e_lights" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_head_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1 mt-1">Head lights/ tail lights/ turn signals / brake lights / hazard warning lights / exterior lamps</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="e_wiper_good" value="Good" class="custom-control-input" asp-for="e_washer_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            <input type="radio" id="e_wiper_warning" value="Warning" class="custom-control-input" asp-for="e_washer_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="e_wiper_danger" value="Danger" class="custom-control-input" asp-for="e_washer_operation" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_wiper_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Windshield wiper and washer operation</legend>
+
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio  ml-3" style="background-color:#117608">
+                            <input type="radio" id="e_glass_good" value="Good" class="custom-control-input" asp-for="e_winshield" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="e_glass_warning" value="Warning" class="custom-control-input" asp-for="e_winshield" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="e_glass_danger" value="Danger" class="custom-control-input" asp-for="e_winshield" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_glass_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Windshield glass</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="e_tank_good" value="Good" class="custom-control-input" asp-for="e_fuel_tank_cap" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="e_tank_warning" value="Warning" class="custom-control-input" asp-for="e_fuel_tank_cap" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="e_tank_danger" value="Danger" class="custom-control-input" asp-for="e_fuel_tank_cap" required>
+                            <label class="custom-control-label ml-2 mt-1" for="e_tank_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Fuel tank cap gasket</legend>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">INTERIOR</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="i_dome_good" value="Good" class="custom-control-input" asp-for="i_combination_meter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px" asp-for="i_combination_meter" required>
+                            <input type="radio" id="i_dome_warning" value="Warning" class="custom-control-input">
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="i_dome_danger" value="Danger" class="custom-control-input" asp-for="i_combination_meter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_dome_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Dome light / amp light / dimmer combination meter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="i_cabin_good" value="Good" class="custom-control-input" asp-for="i_cabin_air_filter" required> 
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="i_cabin_warning" value="Warning" class="custom-control-input" asp-for="i_cabin_air_filter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="i_cabin_danger" value="Danger" class="custom-control-input" asp-for="i_cabin_air_filter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_cabin_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Cabin air filter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="i_parking_good" value="Good" class="custom-control-input" asp-for="i_parking_brake" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300 ; padding-right:8px">
+                            <input type="radio" id="i_parking_warning" value="Warning" class="custom-control-input" asp-for="i_parking_brake" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="i_parking_danger" value="Danger" class="custom-control-input" asp-for="i_parking_brake" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_parking_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Parking brake operation</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="i_check_good" value="Good" class="custom-control-input" asp-for="i_floor" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="i_check_warning" value="Warning" class="custom-control-input" asp-for="i_floor" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="i_check_danger" value="Danger" class="custom-control-input" asp-for="i_floor" required>
+                            <label class="custom-control-label ml-2 mt-1" for="i_check_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Check installation of driver's floormat</legend>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">UNDER HOOD</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_air_good" value="Good" class="custom-control-input" asp-for="uh_air_filter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uh_air_warning" value="Warning" class="custom-control-input" asp-for="uh_air_filter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_air_danger" value="Danger" class="custom-control-input" asp-for="uh_air_filter" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_air_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Air filter</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_battery_cables" value="Good" class="custom-control-input" asp-for="uh_battery_condition" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_cables"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uh_battery_clamps" value="Warning" class="custom-control-input" asp-for="uh_battery_condition" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_clamps"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_battery_corrosion" value="Danger" class="custom-control-input" asp-for="uh_battery_condition" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_battery_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Battery condition (cables / clamps / corrosion)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_state_good" value="Good" class="custom-control-input" asp-for="uh_battery_state" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uh_state_warning" value="Warning" class="custom-control-input" asp-for="uh_battery_state" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_state_danger" value="Danger" class="custom-control-input" asp-for="uh_battery_state" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_state_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Battery state of health</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_cooling_good" value="Good" class="custom-control-input" asp-for="uh_cooling_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="uh_cooling_warning" value="Warning" class="custom-control-input" asp-for="uh_cooling_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_cooling_leaks" value="Danger" class="custom-control-input" asp-for="uh_cooling_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_cooling_leaks"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Cooling System (leaks)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_hoses_cracks" value="Good" class="custom-control-input" asp-for="uh_hoses" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_cracks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uh_hoses_damage" value="Warning" class="custom-control-input" asp-for="uh_hoses" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_hoses_leaks" value="Danger" class="custom-control-input" asp-for="uh_hoses" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_hoses_leaks"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Hoses (crack / damage / leaks)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_drive_cracks"  value="Good" class="custom-control-input" asp-for="uh_drive_belts" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_cracks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="uh_drive_damage" value="Warning" class="custom-control-input"  asp-for="uh_drive_belts" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_damage" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_drive_wear" value="Danger" class="custom-control-input"  asp-for="uh_drive_belts" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_drive_wear"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Drive belts (cracks / damage / wear)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uh_radiator_equipped" value="Good" class="custom-control-input" asp-for="uh_radiator_core" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_equipped"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300; padding-right:8px">
+                            <input type="radio" id="uh_radiator_damage" value="Warning" class="custom-control-input" asp-for="uh_radiator_core" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_damage" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uh_radiator_stripped" value="Danger" class="custom-control-input" asp-for="uh_radiator_core" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uh_radiator_stripped"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Radiator core / air condition condenset (if equipped)</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">FLUIDS</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-1">
+                            <label>OK</label>
+                        </div>
+                        <div class="custom-control ml-1">
+                            <label>Filled</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_windshield_ok" value="OK" class="custom-control-input" asp-for="f_windshield_washer" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_windshield_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_windshield_filled" value="Filled" class="custom-control-input" asp-for="f_windshield_washer" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_windshield_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Windshield Washer</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_cluids_ok" value="OK" class="custom-control-input" asp-for="f_clutch_reservoir" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_cluids_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_cluids_filled" value="Filled" class="custom-control-input" asp-for="f_clutch_reservoir" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_cluids_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Clutch reservoir(if equipped)</legend>
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_coolant_ok" value="OK" class="custom-control-input" asp-for="f_coolant" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_coolant_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_coolant_filled" value="Filled" class="custom-control-input" asp-for="f_coolant" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_coolant_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Coolant (___degree of protection)</legend>
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_trans_ok" value="OK" class="custom-control-input" asp-for="f_transmission" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_trans_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_trans_filled" value="Filled" class="custom-control-input" asp-for="f_transmission" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_trans_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Transmission / transaxle</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_power_ok" value="OK" class="custom-control-input" asp-for="f_power_steering" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_power_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_power_filled" value="Filled" class="custom-control-input" asp-for="f_power_steering" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_power_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Power steering (if equipped)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_diff_ok" value="OK" class="custom-control-input" asp-for="f_differential" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_diff_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_diff_filled" value="Filled" class="custom-control-input" asp-for="f_differential" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_diff_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Differential (if equipped)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_brake_ok" value="OK" class="custom-control-input" asp-for="f_brake_reservoir" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_brake_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_brake_filled" value="Filled" class="custom-control-input" asp-for="f_brake_reservoir" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_brake_filled"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0">Brake reservoir</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-4 mr-4" style="background-color:#117608">
+                            <input type="radio" id="f_case_ok" value="OK" class="custom-control-input" asp-for="f_transfercase" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_case_ok"></label>
+                        </div>
+                        <div class="custom-control custom-radio mr-2">
+                            <input type="radio" id="f_case_filled" value="Filled" class="custom-control-input" asp-for="f_transfercase" required>
+                            <label class="custom-control-label ml-2 mt-1" for="f_case_filled"></label>
+                        </div>
+                        <legend class=" col-form-label col-sm-8 pt-0">Transfer case (4WD models)</legend>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-6">
+            <!-- Horizontal Form -->
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">UNDER VEHICLE</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_propeller_damage" value="Good" class="custom-control-input" asp-for="uv_propeller" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_propeller_leaks" value="Warning" class="custom-control-input" asp-for="uv_propeller" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_propeller_UJoints" value="Danger" class="custom-control-input" asp-for="uv_propeller" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_propeller_UJoints"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Propeller / driveshaft (damage / leaks / U-joints)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_drive_damage" value="Good" class="custom-control-input" asp-for="uv_drive_shaft" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_drive_leaks" value="Warning" class="custom-control-input" asp-for="uv_drive_shaft" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_drive_boots" value="Danger" class="custom-control-input" asp-for="uv_drive_shaft" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_drive_boots"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Drive / CV shaft (damage - leaks - boots)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_axle_damage" value="Good" class="custom-control-input" asp-for="uv_axle_hub" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_axle_leaks" value="Warning" class="custom-control-input" asp-for="uv_axle_hub" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_axle_noise" value="Danger" class="custom-control-input" asp-for="uv_axle_hub" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_axle_noise"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Axle hub & bearing (damage / leaks / noise)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_stearing_damage" value="Good" class="custom-control-input" asp-for="uv_steering" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_stearing_leaks" value="Warning" class="custom-control-input" asp-for="uv_steering" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_stearing_worn" value="Danger" class="custom-control-input" asp-for="uv_steering" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_stearing_worn"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Stearing linkage (damage / leaks / worn components)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_suspension_damage" value="Good" class="custom-control-input" asp-for="uv_suspension" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_suspension_leaks" value="Warning" class="custom-control-input" asp-for="uv_suspension" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_suspension_worn" value="Danger   " class="custom-control-input" asp-for="uv_suspension" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_suspension_worn"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Suspension (damage / leaks / worn components)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_fluid_engine" value="Good" class="custom-control-input" asp-for="uv_fluid_leaks" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_engine"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_fluid_transmission" value="Warning" class="custom-control-input" asp-for="uv_fluid_leaks" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_transmission"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_fluid_differential" value="Danger" class="custom-control-input" asp-for="uv_fluid_leaks" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fluid_differential"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Fluid leaks (engine / transmission / differential)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_exhaust_damage" value="Good" class="custom-control-input" asp-for="uv_exhaust_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_exhaust_leaks" value="Warning" class="custom-control-input" asp-for="uv_exhaust_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_exhaust_corrosion" value="Danger" class="custom-control-input" asp-for="uv_exhaust_system" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_exhaust_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Exhaust System (damage / leaks / corrosion)</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="uv_fuel_damage" value="Good" class="custom-control-input" asp-for="uv_fuel_connections" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_damage"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="uv_fuel_leaks" value="Warning" class="custom-control-input" asp-for="uv_fuel_connections" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_leaks"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="uv_fuel_corrosion" value="Danger" class="custom-control-input" asp-for="uv_fuel_connections" required>
+                            <label class="custom-control-label ml-2 mt-1" for="uv_fuel_corrosion"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-9 pt-0 mt-1">Fuel lines & connections / Fuel Tank Bands / Fuel Tank Vapor Vent System Hoses (damage / leaks / corrosion)</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">TIRES</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="t_tread_good" value="Good" class="custom-control-input" asp-for="t_tread_depth" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="t_tread_warning" value="Warning" class="custom-control-input" asp-for="t_tread_depth" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="t_tread_danger" value="Danger" class="custom-control-input" asp-for="t_tread_depth" required> 
+                            <label class="custom-control-label ml-2 mt-1" for="t_tread_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Tread depth</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="t_tire_good" value="Good" class="custom-control-input" asp-for="t_tire_damage" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="t_tire_warning" value="Warning" class="custom-control-input" asp-for="t_tire_damage" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="t_tire_danger" value="Danger" class="custom-control-input" asp-for="t_tire_damage" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_tire_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Tire Damage / Abnormal wear</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="t_rims_good" value="Good" class="custom-control-input" asp-for="t_rims" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="t_rims_warning" value="Warning" class="custom-control-input" asp-for="t_rims" required> 
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="t_rims_danger" value="Danger" class="custom-control-input" asp-for="t_rims" required> 
+                            <label class="custom-control-label ml-2 mt-1" for="t_rims_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Rims / wheels / lug nuts</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3 mr-5" style="background-color:#117608">
+                            <input type="radio" id="t_rotated_good" value="Good" class="custom-control-input" asp-for="t_rotated" required>
+                            <label class="custom-control-label ml-2 mt-1" for="t_rotated_good"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 ml-3 mt-1">Tires rotated</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">BRAKES</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="b_lining_good" value="Good" class="custom-control-input" asp-for="b_brake_lining" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#F6F300">
+                            <input type="radio" id="b_lining_warning" value="Warning" class="custom-control-input" asp-for="b_brake_lining" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_warning"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="b_lining_danger" value="Danger" class="custom-control-input" asp-for="b_brake_lining" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_lining_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Brake Lining</legend>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="b_brake_good" value="Good" class="custom-control-input" asp-for="b_hoses" required >
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="padding-right:8px">
+                            <input type="radio" id="b_brake_warning" value="Warning" class="custom-control-input" asp-for="b_hoses" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="b_brake_danger" value="Danger" class="custom-control-input" asp-for="b_hoses" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_brake_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Brake Lines / hoses / parking brake cable</legend>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio ml-3" style="background-color:#117608">
+                            <input type="radio" id="b_discs_good" value="Good" class="custom-control-input" asp-for="b_discs" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_good"></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="padding-right:8px">
+                            <input type="radio" id="b_discs_warning" value="Warning" class="custom-control-input" asp-for="b_discs" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_warning" hidden></label>
+                        </div>
+                        <div class="custom-control custom-radio" style="background-color:#ED1818">
+                            <input type="radio" id="b_discs_danger" value="Danger" class="custom-control-input" asp-for="b_discs" required>
+                            <label class="custom-control-label ml-2 mt-1" for="b_discs_danger"></label>
+                        </div>
+                        <legend class="col-form-label col-sm-8 pt-0 mt-1">Discs / drums / calipers / wheel cylinders</legend>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="form-group pt-1">
+                        <label>Comments :</label>
+                        <textarea rows="4" class="form-control mt-1" id="komen" asp-for="komentar" placeholder="Any comment ?"></textarea>
+                    </div>
+                    <div class="form-group pt-2">
+                        <button type="submit" class="btn btn-success" id="simpan" style="width: 150px;" @*onclick="return radioValidation();"*@>Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#simpledate1 .input-group.date').datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+    });
+
+    var date = new Date();
+    var datefix = date.toLocaleDateString().split("/");
+
+    var currentDate = datefix[1] + "/" + datefix[0] + "/" + datefix[2];
+    var currentTime = date.toLocaleTimeString();
+
+    document.getElementById('date').value = currentDate;
+    document.getElementById('time').value = currentTime;
+</script>
+
+<script type="text/javascript">
+    function radioValidation() {
+
+        var data = document.getElementsByName('e_horn');
+        var data = document.getElementsByName('e_head');
+        var data = document.getElementsByName('e_wiper');
+        var data = document.getElementsByName('e_glass');
+        var data = document.getElementsByName('e_tank');
+        var data = document.getElementsByName('i_dome');
+        var data = document.getElementsByName('i_cabin');
+        var data = document.getElementsByName('i_parking');
+        var data = document.getElementsByName('i_check');
+        var data = document.getElementsByName('uh_air');
+        var data = document.getElementsByName('uh_battery');
+        var data = document.getElementsByName('uh_state');
+        var data = document.getElementsByName('uh_cooling');
+        var data = document.getElementsByName('uh_hoses');
+        var data = document.getElementsByName('uh_drive');
+        var data = document.getElementsByName('uh_radiator');
+        var data = document.getElementsByName('t_tread');
+        var data = document.getElementsByName('t_tire');
+        var data = document.getElementsByName('t_rims');
+        var data = document.getElementsByName('b_lining');
+        var data = document.getElementsByName('b_brake');
+        var data = document.getElementsByName('b_discs');
+        var data = document.getElementsByName('uv_propeller');
+        var data = document.getElementsByName('uv_drive');
+        var data = document.getElementsByName('uv_axle');
+        var data = document.getElementsByName('uv_stearing');
+        var data = document.getElementsByName('uv_suspension');
+        var data = document.getElementsByName('uv_fluid');
+        var data = document.getElementsByName('uv_exhaust');
+        var data = document.getElementsByName('uv_fuel');
+        var data = document.getElementsByName('f_windshield');
+        var data = document.getElementsByName('f_cluids');
+        var data = document.getElementsByName('f_coolant');
+        var data = document.getElementsByName('f_trans');
+        var data = document.getElementsByName('f_power');
+        var data = document.getElementsByName('f_diff');
+        var data = document.getElementsByName('f_brake');
+        var data = document.getElementsByName('f_case');
+        var dataValue = false;
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].checked == true) {
+                dataValue = true;
+            }
+        }
+        if (!dataValue) {
+            Swal.fire(
+                'Peringatan !',
+                'Tolong Input Semua Data !',
+                'error'
+            )
+            return false;
+        }
+
+    }
+</script>

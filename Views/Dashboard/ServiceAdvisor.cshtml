@@ -1,0 +1,193 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+
+<!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="ServiceAdvisor">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </div>
+    <hr>
+
+    <div class="row mb-3">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-12 form-group mt-3 text-center" style="font-weight:bolder; font-size:25px;">
+            Master Data
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Data Mekanik</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.mekanik</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="MasterMekanik" asp-action="Index" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users-cog fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Data Customer</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.customer</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="MasterCustomer" asp-action="Index" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Tempat Kerja</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.tempat</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="MasterTempatKerja" asp-action="Index" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-home fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Data Grup</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.grup</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="MasterGrup" asp-action="Index" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 form-group mt-3 text-center" style="font-weight:bolder; font-size:25px;">
+            Data Transaksi
+        </div>
+               <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Data Booking</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.booking</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="Booking" asp-action="Booking" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-list fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+               <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Round Checking</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.rc</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="RoundChecking" asp-action="RoundChecking" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chalkboard fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+               <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">PKB</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.pkb</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="PKB" asp-action="PKB" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-search-plus fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase mb-3 text-dark">Konfirmasi</div>
+                            <div class="h4 mb-3 font-weight-bold text-dark">@ViewBag.konfirmasi</div>
+                            <div class="mt-2 mb-0 text-muted text-xl-left">
+                                <a asp-controller="PKB" asp-action="PKBSelesai" class="card-body-footer">
+                                    Lihat Detail
+                                    <span class="text-success ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-double fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

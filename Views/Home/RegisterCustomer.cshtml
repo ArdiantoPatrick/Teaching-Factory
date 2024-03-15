@@ -1,0 +1,83 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/LayoutLogin.cshtml";
+}
+<div class="container-login">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-12 col-md-9" style="padding-top:50px">
+            <div class="card shadow-sm my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="login-form">
+                                <div class="text-center">
+                                    <h1 class="h3 text-gray-900 mb-4">Daftar Customer</h1>
+                                    <hr class="mb-4" />
+                                </div>
+                                <form method="post" class="user">
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="" class="form-label">Nama<span class="text-danger"> *</span></label>
+                                            <input type="text" class="form-control" asp-for="nama_customer" placeholder="Enter Nama" required />
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="" class="form-label">Nomor Telepon<span class="text-danger"> *</span></label>
+                                            <input type="number" class="form-control" asp-for="notelp_customer" onkeypress="if(this.value.length==14) return false;" placeholder="Enter Nomor Telepon" required>
+                                        </div>
+                                        <div class="col-12 form-group">
+                                            <label for="" class="form-label">Alamat<span class="text-danger"> *</span></label>
+                                            <textarea type="text" class="form-control" asp-for="alamat" placeholder="Enter Alamat" required></textarea>
+                                        </div>
+                                        <div class="col-12 form-group">
+                                            <label for="" class="form-label">Username<span class="text-danger"> *</span></label>
+                                            <input type="text" class="form-control" asp-for="username" placeholder="Enter Username" required />
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="" class="form-label">Kata Sandi<span class="text-danger"> *</span></label>
+                                            <div class="input-group" id="show_hide_password">
+                                                <input type="password" class="form-control" id="pass" style="border-right:none" asp-for="password" placeholder="Enter Password" required>
+                                                <span class="input-group-text" style="background-color: white; border-radius:unset; border-left-style:none; border-bottom-right-radius:5px; border-top-right-radius:5px"><i class="fas fa-eye-slash" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="" class="form-label">Konfirmasi Kata Sandi<span class="text-danger"> *</span></label>
+                                            <input type="password" class="form-control" id="konfirmpass" placeholder="Confirm Password" onchange="konfirmPass()" required>
+                                        </div>
+                                        <div class="col-12 form-group mt-4">
+                                            <button type="submit" id="simpan" class="btn btn-primary btn-block" style="background-color:#0275d8; border-color:#0275d8; color:white; width:100%" disabled>Register</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="font-weight-bold small" asp-controller="Home" asp-action="LoginCustomer">Sudah memiliki akun ?</a>
+                                </div>
+                                <div class="text-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function konfirmPass() {
+        var passawal = document.getElementById("pass").value;
+        var passkonfirm = document.getElementById("konfirmpass").value;
+        var button = document.getElementById("simpan");
+        if (passawal == passkonfirm) {
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+            Swal.fire(
+                'Peringatan !',
+                'Kata Sandi Tidak Sesuai !',
+                'error'
+            )
+        }
+    }
+</script>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Booking>
+@{
+    Layout = "~/Views/Shared/LayoutCustomer.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
+    <h1 class="h3 mb-0 text-gray-800">Data Booking</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Booking</li>
+    </ol>
+</div>
+<hr />
+<a asp-controller="BookingCustomer" asp-action="Create">
+    <button type="button" class="btn btn-outline-success mb-4" style="width: 100px">+ Booking</button>
+</a>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <div class="table-responsive">
+                <table id="table" class="table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Tanggal Service</th>
+                            <th>Waktu Service</th>
+                            <th>Jenis Kendaraan</th>
+                            <th>Merk Kendaraan</th>
+                            <th>Nomor Polisi</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var no = 1;
+                        }
+                        @foreach (var obj in Model)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                @if (obj.aktual_service_tanggal != null)
+                                {
+                                    <td>@obj.aktual_service_tanggal.Value.ToString("D")</td>
+                                    <td>@obj.aktual_service_waktu.Value.ToString("T")</td>
+                                }
+                                else
+                                {
+                                    <td>@obj.rencana_service_tanggal.ToString("D")</td>
+                                    <td>@obj.rencana_service_waktu.ToString("T")</td>
+                                }
+                                <td>@obj.jenis_kendaraan</td>
+                                <td>@obj.merk_kendaraan</td>
+                                <td>@obj.nomor_polisi</td>
+                                <td>
+                                    @if (obj.status == "Menunggu Konfirmasi" || obj.status == "Terkonfirmasi")
+                                    {
+                                        <span class="badge badge-danger" style="font-size:15px;">@obj.status</span>
+                                    }
+                                    else if (obj.status == "RoundChecked" || obj.status == "Dikerjakan")
+                                    {
+                                        <span class="badge badge-warning" style="font-size:15px;">Diproses</span>
+                                    }
+                                    else if (obj.status == "Selesai Dikerjakan")
+                                    {
+                                        <span class="badge badge-success" style="font-size:15px;">Siap Diambil</span>
+                                    }
+                                    else
+                                    {
+                                    
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" asp-action="DetailBooking" asp-route-id="@obj.id_booking">
+                                        <i class="fa fa-list" data-toggle="tooltip" title="Detail Booking"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            no++;
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable();
+    });
+</script>

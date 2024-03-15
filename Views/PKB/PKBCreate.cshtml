@@ -1,0 +1,90 @@
+﻿@model ProjekTeFa.Models.PKB
+@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Perintah Kerja Bengkel</h1>
+    <a asp-controller="PKB" asp-action="PKB">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="p-4">
+                <div class="row">
+                    <div class="col-12 form-group mt-3 font-weight-bold text-primary" style="font-size:25px;">
+                        Penanggung Jawab
+                        <hr />
+                    </div>
+                    <div class="form-group row col-12">
+                        <label for="" class="form-label col-2 mt-2">Nama Service Advisor : </label>
+                        <div class="col-4">
+                            <input type="hidden" class="form-control" value="@ViewBag.data.id_booking" asp-for="id_booking" readonly>
+                            <input type="text" class="form-control" value="@ViewBag.namasa" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group mt-3 font-weight-bold text-primary" style="font-size:25px;">
+                        Data Booking Customer
+                        <hr />
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Nama Customer</label>
+                        <input type="text" class="form-control" value="@ViewBag.data.Customer.nama_customer" readonly>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Nomor Telepon</label>
+                        <input type="text" class="form-control" value="@ViewBag.data.Customer.notelp_customer" readonly>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Jenis Kendaraan</label>
+                        <input type="text" class="form-control" value="@ViewBag.data.jenis_kendaraan" readonly>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Plat Nomor</label>
+                        <input type="text" class="form-control" value="@ViewBag.data.nomor_polisi" readonly>
+                    </div>
+                    <div class="col-12 form-group mt-3 font-weight-bold text-primary" style="font-size:25px;">
+                        Pengerjaan
+                        <hr />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Tempat Kerja<span class="text-danger"> *</span></label>
+                        <select asp-for="id_tempatkerja" class="form-control" asp-items="ViewBag.listtempat" required></select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Grup Mekanik</label>
+                        <select asp-for="id_grup" class="form-control" asp-items="ViewBag.listgrup"></select>
+                    </div>
+                    <div class="col-12 form-group mt-3 font-weight-bold text-primary" style="font-size:25px;">
+                        Rincian Service
+                        <hr />
+                    </div>
+                    @*            <div class="col-6 form-group">
+                    <label for="" class="form-label">Biaya Service<span class="text-danger"> *</span></label>
+                    <input type="number" class="form-control" asp-for="harga" placeholder="Biaya..." required>
+                    </div>*@
+                    <label class="col-12 form-label">Biaya Service<span class="text-danger"> *</span></label><br /><br />
+                    <div class="input-group col-4 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp</span>
+                        </div>
+                        <input type="number" class="form-control" asp-for="harga" placeholder="Biaya..." required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Mekanisme Pengerjaan<span class="text-danger"> *</span></label>
+                        <textarea type="text" rows="4" class="form-control" asp-for="mekanisme_pengerjaan" placeholder="Mekanisme Pengerjaan..." required></textarea>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-success" id="simpan" style="width: 150px; align-items:center">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,124 @@
+﻿<script src="~/js/jquery-steps/build/jquery.steps.min.js"></script>
+<link href="~/js/jquery-steps/jquery.steps.css"
+      rel="stylesheet" />
+<link href="~/js/jquery-steps/steps.css" rel="stylesheet" />
+<script src="~/js/jquery-validation/dist/jquery.validate.min.js"></script>
+@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Perintah Kerja Bengkel</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Transaksi</li>
+        <li class="breadcrumb-item active" aria-current="page">Perintah Kerja Bengkel</li>
+    </ol>
+</div>
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="card">
+                    <div class="card-body wizard-content">
+                        <form id="example-form" action="#" class="mt-5">
+                            <div>
+                                <h3>Account</h3>
+                                <section>
+                                    <label for="userName">User name</label>
+                                    <input id="userName"
+                                           name="userName"
+                                           type="text"
+                                           class="form-control"/>
+                                    <label for="password">Password</label>
+                                    <input id="password"
+                                           name="password"
+                                           type="password"
+                                           class=" form-control"/>
+                                    <label for="confirm">Confirm Password</label>
+                                    <input id="confirm"
+                                           name="confirm"
+                                           type="password"
+                                           class="form-control"/>
+                                </section>
+                                <h3>Profile</h3>
+                                <section>
+                                    <label for="name">First name *</label>
+                                    <input id="name"
+                                           name="name"
+                                           type="text"
+                                           class="required form-control" />
+                                    <label for="surname">Last name *</label>
+                                    <input id="surname"
+                                           name="surname"
+                                           type="text"
+                                           class="required form-control" />
+                                    <label for="email">Email *</label>
+                                    <input id="email"
+                                           name="email"
+                                           type="text"
+                                           class="required email form-control" />
+                                    <label for="address">Address</label>
+                                    <input id="address"
+                                           name="address"
+                                           type="text"
+                                           class="form-control" />
+                                    <p>(*) Mandatory</p>
+                                </section>
+                                <h3>Hints</h3>
+                                <section>
+                                    <ul>
+                                        <li>Foo</li>
+                                        <li>Bar</li>
+                                        <li>Foobar</li>
+                                    </ul>
+                                </section>
+                                <h3>Finish</h3>
+                                <section>
+                                    <input id="acceptTerms"
+                                           name="acceptTerms"
+                                           type="checkbox"
+                                           class="required" />
+                                    <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                                </section>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Basic Example with form
+    var form = $("#example-form");
+    form.validate({
+        errorPlacement: function errorPlacement(error, element) {
+            element.before(error);
+        },
+        rules: {
+            confirm: {
+                equalTo: "#password",
+            },
+        },  
+    });
+    form.children("div").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex) {
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onFinishing: function (event, currentIndex) {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex) {
+            alert("Submitted!");
+        },
+    });
+</script>

@@ -1,0 +1,79 @@
+﻿@model ProjekTeFa.Models.Customer
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/LayoutCustomer.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Profile Customer</h1>
+    <a asp-controller="Dashboard" asp-action="Customer">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="user">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Nama<span class="text-danger"> *</span></label>
+                        <input type="hidden" class="form-control" asp-for="id_customer">
+                        <input type="hidden" class="form-control" asp-for="status">
+                        <input type="hidden" class="form-control" asp-for="created_date">
+                        <input type="text" class="form-control" asp-for="nama_customer" readonly/>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Nomor Telepon<span class="text-danger"> *</span></label>
+                        <input type="number" class="form-control" asp-for="notelp_customer" readonly>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Alamat<span class="text-danger"> *</span></label>
+                        <textarea type="text" class="form-control" asp-for="alamat" readonly></textarea>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Username<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="username" readonly />
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="form-label">Kata Sandi<span class="text-danger"> *</span></label>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" class="form-control" id="pass" style="border-right:none" asp-for="password" required>
+                            <span class="input-group-text" style="background-color: white; border-radius:unset; border-left-style:none; border-bottom-right-radius:5px; border-top-right-radius:5px"><i class="fas fa-eye-slash" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Konfirmasi Kata Sandi<span class="text-danger"> *</span></label>
+                        <input type="password" class="form-control" id="konfirmpass" placeholder="Confirm Password" onchange="konfirmPass()" required>
+                    </div>
+                    <div class="col-2 form-group mt-4">
+                        <button type="submit" id="simpan" class="btn btn-success btn-block" disabled>Update Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function konfirmPass() {
+        var passawal = document.getElementById("pass").value;
+        var passkonfirm = document.getElementById("konfirmpass").value;
+        var button = document.getElementById("simpan");
+        if (passawal == passkonfirm) {
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+            Swal.fire(
+                'Peringatan !',
+                'Kata Sandi Tidak Sesuai !',
+                'error'
+            )
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('#pass').val('@Model.password');
+    });
+</script>

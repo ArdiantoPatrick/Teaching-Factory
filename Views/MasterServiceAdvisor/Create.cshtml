@@ -1,0 +1,53 @@
+﻿@model ProjekTeFa.Models.Prodi
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Service Advisor</h1>
+    <a asp-controller="MasterServiceAdvisor" asp-action="Index">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="p-4">
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Nama<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="nama" required>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Email<span class="text-danger"> *</span></label>
+                        <input type="email" class="form-control" asp-for="email" required>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">Nomor Telepon<span class="text-danger"> *</span></label>
+                        <input type="number" class="form-control" asp-for="notelp" onkeypress="if(this.value.length==14) return false;" required>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Alamat<span class="text-danger"> *</span></label>
+                        <textarea type="text" class="form-control" asp-for="alamat" required></textarea>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="" class="form-label">NIM / NPK<span class="text-danger"> *</span></label>
+                        <input type="number" class="form-control" asp-for="npk" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="form-label">Kata Sandi<span class="text-danger"> *</span></label>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" class="form-control" id="pass" style="border-right:none" asp-for="password" required>
+                            <span class="input-group-text" style="background-color: white; border-radius:unset; border-left-style:none; border-bottom-right-radius:5px; border-top-right-radius:5px"><i class="fas fa-eye-slash" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-success" id="simpan" style="width: 150px; align-items:center">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

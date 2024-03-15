@@ -1,0 +1,99 @@
+﻿@model ProjekTeFa.Models.Booking
+@{
+    Layout = "~/Views/Shared/LayoutCustomer.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Booking</h1>
+    <a asp-controller="BookingCustomer" asp-action="Index">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="p-4">
+                <div class="row">
+                    <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                        Rencana Service
+                        <hr />
+                    </div>
+                    <div class="col-3 form-group">
+                        <label for="" class="form-label">Tanggal Rencana Service<span class="text-danger"> *</span></label>
+                        <input type="date" class="form-control" asp-for="rencana_service_tanggal" required />
+                    </div>
+                    <div class="col-3 form-group">
+                        <label for="" class="form-label">Waktu Rencana Service<span class="text-danger"> *</span></label>
+                        <input type="time" class="form-control clock-picker" asp-for="rencana_service_waktu" required />
+                    </div>
+                    <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                        Data Kendaraan
+                        <hr />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Jenis Kendaraan<span class="text-danger"> *</span></label>
+                        <select class="form-control" asp-for="jenis_kendaraan" required>
+                            <option value="">-- Pilih Jenis Kendaraan --</option>
+                            <option value="Sepeda Motor">Sepeda Motor</option>
+                            <option value="Mobil">Mobil</option>
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Nomer Polisi<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="nomor_polisi" required />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Merk Mobil/Sepeda Motor<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="merk_kendaraan" required />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Tahun Pembuatan<span class="text-danger"> *</span></label>
+                        <input type="number" min="1985" max="2025" step="1" value="2000" class="form-control" asp-for="tahun_pembuatan" required />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Warna<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="warna" required />
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="form-label">Odometer (KM)<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" asp-for="odometer" required />
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="" class="form-label">Keluhan Customer/Problem/Pekerjaan<span class="text-danger"> *</span></label>
+                        <textarea type="text" rows="4" class="form-control" asp-for="keluhan" required></textarea>
+                    </div>
+                    <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                        Note
+                        <hr />
+                    </div>
+                    <div class="col-12 form-group">
+                    <label for="" class="form-label">Spare part disiapkan / dibeli oleh Customer<span class="text-danger"> *</span></label>
+                    </div>
+                    <div class="col-sm-9 ml-1">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                            <label class="custom-control-label" for="customCheck1">Saya siapkan sebelum melakukan service</label>
+                        </div>
+                    </div>
+@*                    <div class="col-1 form-group">
+                        <input type="radio" class="form-control" style="width:20px;" required />
+                    </div>
+                    <div class="col-6 form-group" style="padding-top: 10px">
+                        <label>Saya siapkan sebelum melakukan service</label>
+                    </div>*@
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-success" id="simpan" style="width: 150px; align-items:center">Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+if (!this.form.check)
+$(function() {
+    $(".checkbox1").click(function() {
+      $(".delete").attr("disabled", !$(".checkbox1:checked").length);
+    });
+});
+</script>

@@ -1,0 +1,202 @@
+﻿@model IEnumerable<ProjekTeFa.Models.Booking>
+
+@{
+    Layout = "~/Views/Shared/LayoutServiceAdvisor.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Detail Booking</h1>
+    <a asp-controller="Booking" asp-action="Booking">
+        <button type="button" class="btn btn-outline-primary mb-4" style="width: 150px">Back</button>
+    </a>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" style="padding: 20px 20px 20px 20px;">
+            <form method="post" class="p-4">
+                <div class="row">
+                    @foreach (var obj in Model)
+                    {
+                        <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                            Customer
+                            <hr />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Nama Customer</label>
+                            <input type="text" class="form-control" value="@obj.Customer.nama_customer" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Nomor Telepon</label>
+                            <input type="text" class="form-control" value="@obj.Customer.notelp_customer" readonly />
+                        </div>
+                        <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                            Rencana Service
+                            <hr />
+                        </div>
+                        <div class="col-3 form-group">
+                            <label for="" class="form-label">Tanggal Rencana Service</label>
+                            <input type="text" class="form-control" value="@obj.rencana_service_tanggal.ToString("D")" readonly />
+                        </div>
+                        <div class="col-3 form-group">
+                            <label for="" class="form-label">Waktu Rencana Service</label>
+                            <input type="text" class="form-control" value="@obj.rencana_service_waktu" readonly />
+                        </div>
+                        <div class="col-3 form-group">
+                            <label for="" class="form-label">Tanggal Aktual Service</label>
+                            @if (@obj.aktual_service_tanggal != null)
+                            {
+                                <input type="text" class="form-control" value="@obj.aktual_service_tanggal.Value.ToString("D")" readonly />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" style="color:red;" value="Belum Terisi" readonly />
+                            }
+                        </div>
+                        <div class="col-3 form-group">
+                            <label for="" class="form-label">Waktu Aktual Service</label>
+                            @if (@obj.aktual_service_waktu != null)
+                            {
+                                <input type="text" class="form-control" value="@obj.aktual_service_waktu" readonly />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" style="color:red;" value="Belum Terisi" readonly />
+                            }
+                        </div>
+                        <div class="col-12 form-group mt-3" style="font-weight:bolder; font-size:25px;">
+                            Data Kendaraan
+                            <hr />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Jenis Kendaraan</label>
+                            <input type="text" class="form-control" value="@obj.jenis_kendaraan" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Nomer Polisi</label>
+                            <input type="text" class="form-control" value="@obj.nomor_polisi" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Merk Mobil/Sepeda Motor</label>
+                            <input type="text" class="form-control" value="@obj.merk_kendaraan" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Tahun Pembuatan</label>
+                            <input type="text" class="form-control" value="@obj.tahun_pembuatan" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Warna</label>
+                            <input type="text" class="form-control" value="@obj.warna" readonly />
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="" class="form-label">Odometer (KM)</label>
+                            <input type="text" class="form-control" value="@obj.odometer" readonly />
+                        </div>
+                        <div class="col-12 form-group">
+                            <label for="" class="form-label">Keluhan Customer/Problem/Pekerjaan</label>
+                            <textarea type="text" class="form-control" readonly>@obj.keluhan</textarea>
+                        </div>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable();
+    });
+
+    //$(document).ready(function () {
+    //    $('#table2').DataTable();
+    //});
+</script>
+<script>
+    if ("@TempData["IsDelete"]" != "") {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-3 text-white',
+                cancelButton: 'btn btn-danger mx-3 text-white'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Yakin Hapus Data?',
+            text: "Booking yang dihapus tidak dapat dikembalikan",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus!',
+            cancelButtonText: 'Batal!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Berhasil!',
+                    'Data berhasil dihapus',
+                    'success'
+                ).then((value) => {
+                    window.location = "@Url.Action("DeleteConfirmed", "Booking", new { id = @TempData["ID"] })";
+                });
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+
+            }
+        })
+    }
+</script>
+<script>
+    if ("@TempData["IsConfirm"]" != "") {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-3 text-white',
+                cancelButton: 'btn btn-danger mx-3 text-white'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Yakin Konfirmasi Data?',
+            text: "Data yang dikonfirmasi akan dilanjutkan ke proses round checking!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Konfirmasi!',
+            cancelButtonText: 'Batal!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Berhasil!',
+                    'Data terkonfirmasi',
+                    'success'
+                ).then((value) => {
+                    window.location = "@Url.Action("ConfirmBooking", "Booking", new { id = @TempData["ID"] })";
+                });
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+
+            }
+        })
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('.btnUpdate').on('click', function () {
+            // Call Modal Update
+            $('#UpdateBooking').modal('show');
+            // get data from button delete
+            const id = $(this).data('id');
+            const tanggal = $(this).data('tanggal');
+            const waktu = $(this).data('waktu');
+            const platno = $(this).data('platno');
+            let tanggal2 = tanggal.split('/');
+            var tanggalfinal = tanggal2[2] + '-' + tanggal2[1] + '-' + tanggal2[0];
+            // Set data to Form Edit
+            $('#id_booking').val(id);
+            $('#tanggal').val(tanggalfinal);
+            $('#waktu').val(waktu);
+            $('#platno').text(platno);
+        });
+    });
+</script>
